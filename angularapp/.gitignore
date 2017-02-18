@@ -4,3 +4,7 @@ target
 !.settings/.jsdtscope
 .project
 .classpath
+src/main/webapp/node_modules
+src/main/webapp/node_modules/*
+src/main/webapp/typings
+src/main/webapp/typings/*
