@@ -1,1 +1,132 @@
-<h2>{{title}}</h2>
+<!--<div id="header" [style.height.px]="headerHeight">
+    <div class="title">Rkumbhare</div>
+</div>-->
+
+<!--
+<div>
+    <div class="r-container">
+
+        <div class="menu" [ngClass]="menuActive ?'col-sm-3 col-md-3' : 'col-sm-1 col-md-1'">
+            <div class="header" *ngIf="menuActive">
+                <div class="col-xs-8 col-sm-8 col-md-8">
+                    <div class="title">
+                        <span>Rkumbhare</span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="menu-toggler glyphicon glyphicon-align-justify" (click)="menuActive ? menuActive=false : menuActive=true">
+                    </div>
+                </div>
+            </div>
+            <div class="header" *ngIf="!menuActive">
+                <div class="col-xs-8 col-sm-12 col-md-12">
+                    <div class="title">
+                        <span>Rkumbhare</span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-12 col-md-12">
+                    <div class="menu-toggler glyphicon glyphicon-align-justify" (click)="menuActive ? menuActive=false : menuActive=true">
+                    </div>
+                </div>
+            </div>
+            <div class="user-area" *ngIf="menuActive">
+                <div class="profile">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <img src="app/resources/images/admin.jpg" />
+                        </div>
+                        <div class="col-sm-6 col-md-9">
+                            <div class="profile-info">
+                                <div style="font-size: 16px;">User Name</div>
+                                <div style="font-size: 12px;">Role</div>
+                                <div class="user-bar">
+                                    <a href="profile.html" title=""><i class="fa fa-cog"></i></a>
+                                    <a href="login.html" title=""><i class="fa fa-lock"></i></a>
+                                    <a href="mail.html" title=""><i class="fa fa-envelope-o"></i></a>
+                                    <a href="login.html" title=""><i class="fa fa-power-off"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-menu *ngIf="menuActive"></app-menu>
+        </div>
+        <div class="main" [ngClass]="menuActive ?'col-sm-9 col-md-9' : 'col-sm-11 col-md-11'">
+            <div class="body" [style.min-height.px]="bodyMinHeight">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+-->
+
+<!--<div id="menu" class="col-sm-3 col-md-3" style="position: fixed; left: 0; top: 0;" [style.min-height.px]="bodyMinHeight">
+    <app-menu></app-menu>
+</div>-->
+
+
+
+<div class="main-container">
+
+    <div class="header" [ngClass]="menuActive ? '' : 'menu-inactive'">
+
+        <div class="header-pane" *ngIf="menuActive">
+            <div class="row">
+                <div class="col-xs-8 col-sm-8 col-md-8">
+                    <div class="title">
+                        <span>Rkumbhare</span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="menu-toggler glyphicon glyphicon-align-justify" (click)="menuActive ? menuActive=false : menuActive=true">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-pane" *ngIf="!menuActive">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="title">
+                        <span>Rkumbhare</span>
+                    </div>
+                    <div class="menu-toggler text-center glyphicon glyphicon-align-justify" (click)="menuActive ? menuActive=false : menuActive=true">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="authUser">
+            <div class="user-area" *ngIf="menuActive">
+                <div class="profile">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <img src="app/resources/images/admin.jpg" />
+                        </div>
+                        <div class="col-sm-6 col-md-9">
+                            <div class="profile-info">
+                                <div style="font-size: 16px;">User Name</div>
+                                <div style="font-size: 12px;">Role</div>
+                                <div class="user-bar">
+                                    <a href="profile.html" title=""><i class="fa fa-cog"></i></a>
+                                    <a href="login.html" title=""><i class="fa fa-lock"></i></a>
+                                    <a href="mail.html" title=""><i class="fa fa-envelope-o"></i></a>
+                                    <a href="login.html" title=""><i class="fa fa-power-off"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-menu *ngIf="menuActive"></app-menu>
+        </div>
+    </div>
+
+
+    <div class="body">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

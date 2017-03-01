@@ -11,7 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
+        this.headerHeight = 50;
+        this.menuActive = true;
         this.title = "Welcome to Angular2 Application";
+        var bodyHt = document.getElementsByTagName("body")[0].clientHeight;
+        this.bodyMinHeight = bodyHt;
+        this.menubarHeight = bodyHt;
     }
     AppComponent = __decorate([
         core_1.Component({
