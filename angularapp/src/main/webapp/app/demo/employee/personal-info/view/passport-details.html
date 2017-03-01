@@ -1,0 +1,56 @@
+<div class="familyDetailsForm">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Passport No.</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="passportNo" [(ngModel)]="employeeInfo.passport.passportNo" 
+                            class="form-control" placeholder="enter your passport no" />
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Passport Issue Date</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-calendar [showIcon]="true" [(ngModel)]="employeeInfo.passport.issueDate" dateformat="dd/MM/yyyy">
+                    </p-calendar>
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Country of Issue</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-dropdown [options]="countryList" [(ngModel)]="employeeInfo.passport.countryOfIssue">
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Passport Expiry Date</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-calendar [showIcon]="true" [(ngModel)]="employeeInfo.passport.expiryDate" dateformat="dd/MM/yyyy">
+                    </p-calendar>
+                </div>
+            </div>
+        </div>
+         <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>City of Issue</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-dropdown [options]="cityList" [(ngModel)]="employeeInfo.passport.cityOfIssue">
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="ui-grid-col-6"></div>
+        </div>
+    </div>
+</div>

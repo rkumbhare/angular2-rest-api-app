@@ -1,0 +1,87 @@
+<div class="familyDetailsForm" *ngIf="selectedMode==mode.EDIT_MODE">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Name</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="name" class="form-control" [(ngModel)]="familyMember.name" placeholder="family member name" />
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Relation</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-autoComplete [suggestions]="relations" (completeMethod)="searchRelation($event)" 
+                            [(ngModel)]="familyMember.relation" placeholder="Your relation">
+                    </p-autoComplete>
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Date of Birth</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-calendar [(ngModel)]="familyMember.dob" [showIcon]="true" dateformat="dd/MM/yyyy"></p-calendar>
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Occupation</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-autoComplete [suggestions]="occupations" [(ngModel)]="familyMember.occupation" 
+                        (completeMethod)="searchOccupation($event)" placeholder="Occupation">
+                    </p-autoComplete>
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Contact No.</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="contact" class="form-control" [(ngModel)]="familyMember.contact"
+                            placeholder="phone or mobile no" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-12">
+                 <button class="btn btn-primary" (click)="addMember()" *ngIf="!editAction">Add Member</button>
+                 <button class="btn btn-primary" (click)="editMember()" *ngIf="editAction">Update Member</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div><div class="clear"></div>
+    
+</div>
+
+
+
+<div class="familyMemberList">
+    <p-dataTable [value]="employeeInfo.familyMemberList">
+        <p-column field="seqNo" header="seqNo"></p-column>
+        <p-column field="name" header="Name"></p-column>
+        <p-column field="relation" header="Relation"></p-column>
+        <p-column header="Date of Birth">
+            <template let-member="rowData" pTemplate="body">
+                <span>{{member.dob|date:'dd/MM/yyyy'}}</span>
+            </template>
+        </p-column>
+        <p-column field="occupation" header="Occupation"></p-column>
+        <p-column field="contact" header="Contact"></p-column>
+        <p-column header="Action">
+            <template let-member="rowData" pTemplate="body">
+                <a href="" (click)="edit(member)">edit</a>
+                <a href="" (click)="deleteMember(member)">del</a>
+            </template>
+        </p-column>
+    </p-dataTable>
+</div>

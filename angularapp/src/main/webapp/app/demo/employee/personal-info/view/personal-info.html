@@ -1,0 +1,86 @@
+<div class="page-header">
+    <div class="page-title">
+        <h2>Personal Information</h2>
+    </div>
+
+
+    <ul class="page-menu">
+        <li [ngClass]="selectedOption==personalInfoEnum.BASIC ? 'active' : ''" (click)="selectedOption=personalInfoEnum.BASIC">
+            <span class="label">Basic Details</span>
+        </li>
+        <li [ngClass]="selectedOption==personalInfoEnum.FAMILY ? 'active' : ''" (click)="selectedOption=personalInfoEnum.FAMILY">
+            <span class="label">Family Members</span>
+        </li>
+        <li [ngClass]="selectedOption==personalInfoEnum.PASSPORT ? 'active' : ''" (click)="selectedOption=personalInfoEnum.PASSPORT">
+            <span class="label">Passport Details</span>
+        </li>
+        <li [ngClass]="selectedOption==personalInfoEnum.BANK_ACCOUNT ? 'active' : ''" (click)="selectedOption=personalInfoEnum.BANK_ACCOUNT">
+            <span class="label">Bank Account</span>
+        </li>
+    </ul>
+</div>
+
+<div class="page-content">
+
+    <div id="personalInfoPanel" class="panel panel-primary" *ngIf="selectedMode==mode.EDIT_MODE">
+        <div class="panel-heading">
+            {{selectedOption}}
+        </div>
+        <div class="panel-body">
+            <div [ngSwitch]="selectedOption">
+                <employee-basic-details [selectedMode]="selectedMode" [employeeInfo]="employee.employeeInfo" *ngSwitchCase="personalInfoEnum.BASIC">
+                </employee-basic-details>
+                <employee-family-details [selectedMode]="selectedMode" [employeeInfo]="employee.employeeInfo" *ngSwitchCase="personalInfoEnum.FAMILY">
+                </employee-family-details>
+                <employee-passport-details [selectedMode]="selectedMode" [employeeInfo]="employee.employeeInfo" *ngSwitchCase="personalInfoEnum.PASSPORT">
+                </employee-passport-details>
+                <employee-bank-account-details [selectedMode]="selectedMode" [employeeInfo]="employee.employeeInfo" *ngSwitchCase="personalInfoEnum.BANK_ACCOUNT">
+                </employee-bank-account-details>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div style="text-align: right">
+                <button class="btn btn-primary" (click)="prevOption()" *ngIf="selectedOption!=personalInfoEnum.BASIC">
+                Previous
+            </button>
+                <button class="btn btn-primary" (click)="nextOption()" *ngIf="selectedOption!=personalInfoEnum.BANK_ACCOUNT">
+                Save & Continue
+            </button>
+                <button class="btn btn-primary" *ngIf="selectedOption==personalInfoEnum.BANK_ACCOUNT" (click)="submit()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="personalInfoPanel" class="panel panel-primary" *ngIf="selectedMode==mode.VIEW_MODE">
+        <div class="panel-heading">
+            <span>{{selectedOption}}</span>
+            <span class="panel-action" (click)="menu.toggle($event)">
+                <!--<i class="fa fa-cog"></i>-->
+            </span>
+        </div>
+        <div class="panel-body">
+            <div [ngSwitch]="selectedOption">
+                <employee-basic-details [selectedMode]="selectedMode" [employeeInfo]="employee.employeeInfo" *ngSwitchCase="personalInfoEnum.BASIC">
+                </employee-basic-details>
+                <employee-family-details [selectedMode]="selectedMode" [employeeInfo]="employee.employeeInfo" *ngSwitchCase="personalInfoEnum.FAMILY">
+                </employee-family-details>
+                <employee-passport-details [selectedMode]="selectedMode" [employeeInfo]="employee.employeeInfo" *ngSwitchCase="personalInfoEnum.PASSPORT">
+                </employee-passport-details>
+                <employee-bank-account-details [selectedMode]="selectedMode" [employeeInfo]="employee.employeeInfo" *ngSwitchCase="personalInfoEnum.BANK_ACCOUNT">
+                </employee-bank-account-details>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div style="text-align: right">
+                <button class="btn btn-primary" (click)="prevOption()" *ngIf="selectedOption!=personalInfoEnum.BASIC">
+                Previous
+            </button>
+                <button class="btn btn-primary" (click)="nextOption()" *ngIf="selectedOption!=personalInfoEnum.BANK_ACCOUNT">
+                Next
+            </button>
+                <button class="btn btn-primary" (click)="updateMode()">Update</button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,246 @@
+<div class="basic" *ngIf="selectedMode==mode.VIEW_MODE">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>First Name</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{employeeInfo.firstName}}
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>Last Name</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{employeeInfo.lastName}}
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>Gender</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{ employeeInfo.gender }}
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>Date of Birth</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{ employeeInfo.dob | date:'dd/MM/yyyy' }}
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>Nationality</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{ employeeInfo.nationality }}
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>Marital Status</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{ employeeInfo.maritalStatus }}
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>Phone No.</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{ employeeInfo.phone }}
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>Mobile No.</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{ employeeInfo.mobile }}
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>Email Id</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{ employeeInfo.emailId }}
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label><strong>Blood Group</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    {{ employeeInfo.bloodGroup }}
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6" *ngFor="let address of employeeInfo.addressList">
+                <div class="ui-grid-col-4">
+                    <label *ngIf="address.type=='current'"><strong>Current Address</strong></label>
+                    <label *ngIf="address.type=='permanent'"><strong>Permanent Address</strong></label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <span *ngIf="address.addressLine1">{{address.addressLine1}},</span> 
+                    <span *ngIf="address.addressLine2">{{address.addressLine2}},</span> 
+                    <span *ngIf="address.city">{{address.city}},</span> 
+                    <span *ngIf="address.state">{{address.state}},</span> 
+                    <span *ngIf="address.country">{{address.country}},</span> 
+                    <span *ngIf="address.pincode">{{address.pincode}}</span> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="basic" *ngIf="selectedMode==mode.EDIT_MODE">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>First Name</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="firstName" [(ngModel)]="employeeInfo.firstName" class="form-control" placeholder="enter your firstname" />
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Last Name</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="lastName" [(ngModel)]="employeeInfo.lastName" class="form-control" placeholder="enter your lastname" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Gender</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-dropdown [options]="genders" [(ngModel)]="employeeInfo.gender"></p-dropdown>
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Date of Birth</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-calendar [(ngModel)]="employeeInfo.dob" [showIcon]="true" dateformat="dd/MM/yyyy"></p-calendar>
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label> Nationality</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="nationality"[(ngModel)]="employeeInfo.nationality" class="form-control" placeholder="enter your nationality" />
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label> Marital Status </label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-dropdown [options]="maritalStatusList" [(ngModel)]="employeeInfo.maritalStatus"></p-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label> Phone No.</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="phone" [(ngModel)]="employeeInfo.phone" class="form-control" placeholder="enter your phone no" />
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Mobile No.</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="mobile" [(ngModel)]="employeeInfo.mobile" class="form-control" placeholder="enter your mobile no" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label> Email Id</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="emailId" [(ngModel)]="employeeInfo.emailId" class="form-control" placeholder="enter your emailId" />
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label> Blood Group </label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <p-dropdown [options]="bloodGroupList" [(ngModel)]="employeeInfo.bloodGroup"></p-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6" *ngFor="let address of employeeInfo.addressList">
+                <div class="ui-grid-col-4">
+                    <label *ngIf="address.type=='current'"> Current Address </label>
+                    <label *ngIf="address.type=='permanent'"> Permanent Address </label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <div class="ui-grid-col-12">
+                        <input type="text" name="addressLine1" class="form-control" [(ngModel)]="address.addressLine1" 
+                                placeholder="Flat/House No" />
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12">
+                            <input type="text" name="addressLine2" class="form-control" [(ngModel)]="address.addressLine2" 
+                                    placeholder="Street/Aread Name" />
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12">
+                            <p-dropdown [options]="cityList" [(ngModel)]="address.city" [autoWidth]="true"></p-dropdown>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12">
+                            <p-dropdown [options]="stateList" [(ngModel)]="address.state" [autoWidth]="true"></p-dropdown>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12">
+                            <p-dropdown [options]="countryList" [(ngModel)]="address.country" [autoWidth]="true"></p-dropdown>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12">
+                            <input type="text" class="form-control small" name="pincode" [(ngModel)]="address.pincode"
+                                     placeholder="Pincode" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="familyDetailsForm">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Bank Name</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="bankName" class="form-control" [(ngModel)]="employeeInfo.bankAccount.bankName" 
+                            placeholder="enter bank name" />
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Bank Branch Name</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="bankBranchName" [(ngModel)]="employeeInfo.bankAccount.branchName"
+                            class="form-control" placeholder="enter bank name" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Employee Name as per Bank</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="employeeName" [(ngModel)]="employeeInfo.bankAccount.accHolderName" 
+                            class="form-control" placeholder="enter your name as per bank" />
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Account No.</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="accountNumber" [(ngModel)]="employeeInfo.bankAccount.accountNo" 
+                            class="form-control" placeholder="enter bank account number" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>IFSC Code</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="ifscCode" [(ngModel)]="employeeInfo.bankAccount.ifscCode" 
+                            class="form-control" placeholder="enter bank ifsc code" />
+                </div>
+            </div>
+            <div class="ui-grid-col-6">
+                <div class="ui-grid-col-4">
+                    <label>Pan Card No.</label>
+                </div>
+                <div class="ui-grid-col-7">
+                    <input type="text" name="pan" [(ngModel)]="employeeInfo.bankAccount.panCardNo" 
+                            class="form-control" placeholder="enter pan no" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
